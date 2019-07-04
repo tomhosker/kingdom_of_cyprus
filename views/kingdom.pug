@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  p The #[b Kingdom of Cyprus] is an organisation which aspires to be a sovereign subject of international law --- that is, a state which claims no physical territory --- and the purpose of which is the preservation of incorporeal Christian and English heritage.
+
+  h2 Duchies
+
+  p The kingdom is organised along feudal lines, drawing inspiration chiefly from the English system of peerages and manorialism. Accordingly, the kingdom is divided into duchies, which are themselves further divided into counties, baronies and manors.
+
+  table
+    tr
+      for heading in duchiesHeadings
+        th #{heading}
+    for duchy in duchies
+      tr
+        for datapoint in duchy
+          td #{datapoint}
+
+  h2 Government and Law
+
+  p The kingdom is an absolute monarchy: all legitimate authority flows from the Cyprian crown. His Majesty the King exercises executive power through His Majesty's Government, and legislative power through promulgating letters patent. A register of such patents can be found #[a(href="register.html") here].
+
+  h2 Culture
+
+  p Inasmuch as it is proper for His Majesty's Government to regulate culture, this function is carried out by #[a(href="academy.html") Royal Cyprian Academy] and #[a(href="canons.html") Hosker's Canons].
