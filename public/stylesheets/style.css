@@ -85,3 +85,7 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+
+form {
+  padding-left: 30px;
+}

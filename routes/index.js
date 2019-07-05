@@ -14,7 +14,12 @@ const finaliser = new Finaliser();
 
 // Return the home page.
 router.get("/", function(req, res, next){
-  finaliser.protoRender(req, res, "index", { title: "Welcome" });
+  var isLoggedIn = true;
+
+  if(req.user === undefined) isLoggedIn = false;
+
+  finaliser.protoRender(req, res, "index",
+                        { title: "Welcome", loggedIn: isLoggedIn });
 });
 
 // Exports.

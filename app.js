@@ -1,4 +1,35 @@
 /*
+Set up the login system.
+*/
+
+// Login imports.
+var passport = require("passport");
+var Strategy = require("passport-local").Strategy;
+var signingin = require("./signingin");
+
+// Configure the local strategy for use by Passport.
+passport.use(new Strategy(
+  function(username, password, cb) {
+    signingin.users.findByUsername(username, function(err, user) {
+      if (err) { return cb(err); }
+      if (!user) { return cb(null, false); }
+      if (user.password != password) { return cb(null, false); }
+      return cb(null, user);
+    });
+  }));
+
+// Configure Passport authenticated session persistence.
+passport.serializeUser(function(user, cb) {
+  cb(null, user.id);
+});
+passport.deserializeUser(function(id, cb) {
+  signingin.users.findById(id, function (err, user) {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
+
+/*
 This is where it all begins.
 */
 
@@ -13,6 +44,7 @@ const favicon = require("express-favicon");
 // Local imports.
 const indexRouter = require("./routes/index");
 const territorialRouter = require("./routes/territorial");
+const profileRouter = require("./routes/profile");
 
 // Constants.
 const notFound = 404;
@@ -23,17 +55,52 @@ var app = express();
 // View engine setup.
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+
+// Use application-level middleware for common functionality, including
+// parsing and session handling.
+app.use(require("body-parser").urlencoded({ extended: true }));
+app.use(require("express-session")({ secret: "keyboard cat", resave: false,
+                                     saveUninitialized: false }));
+
+// Initialise Passport and restore authentication state, if any, from the
+// session.
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Initialise some other resources.
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(__dirname+"/public/favicon.ico"));
+
+// ROUTES.
 app.use("/", indexRouter);
-app.use("/territory", territorialRouter);
+app.use("/territory",
+        require("connect-ensure-login").ensureLoggedIn(),
+        territorialRouter);
+app.use("/profile",
+        require("connect-ensure-login").ensureLoggedIn(),
+        profileRouter);
+app.get("/login",
+        function(req, res){
+          res.redirect("/");
+        });
+app.post("/login", 
+  passport.authenticate("local", { failureRedirect: "/login" }),
+  function(req, res) {
+    res.redirect("/");
+  });
+app.get("/logout",
+  function(req, res){
+    req.logout();
+    res.redirect("/");
+  });
 
 // Catch 404 and forward to error handler.
 app.use(function(req, res, next){
+console.log(req);
   next(createError(notFound));
 });
 

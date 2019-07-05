@@ -3,3 +3,15 @@ extends layout
 block content
   h1 Welcome to the Kingdom of Cyprus
   p Welcome to the website of the #[strong Kingdom of Cyprus], an ark designed to preserve all that is good in both the Christian faith and the English nation in these troubled times.
+
+  if loggedIn
+    p #[i Logged in.]
+  else
+    form(action="/login", method="post")
+      p
+        | Username: 
+        input(type="text", name="username")
+      p
+        | Password: 
+        input(type="password", name="password")
+      input(type="submit", value="Submit")
