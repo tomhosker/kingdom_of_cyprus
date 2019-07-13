@@ -76,6 +76,10 @@ table {
   width: 100%;
 }
 
+.profile-box {
+  width: 100%;
+}
+
 tr:nth-child(even) {
   background-color: #dddddd;
 }
@@ -88,4 +92,35 @@ td, th {
 
 form {
   padding-left: 30px;
+}
+
+img {
+  margin: 1em;
+}
+
+.kingdom-box
+{
+  margin-top: 0em;
+}
+
+profilebox {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  margin-right: 0em;
+  width: 400px;
+  float: right;
+  text-align: center;
+  padding: 1em;
+  border-color: black;
+  border-style: solid;
+  border-width: 0px 0px 0px 5px;
+}
+
+.kingdom {
+  border-color: black;
+  width: 470px;
+  border-style: double;
+  border-width: 0px 0px 0px 60px;
 }

@@ -1,12 +1,20 @@
 extends layout
 
 block content
+  img(src="images/sinaichrist.jpg", alt="Sinai Christ", align="right", width=400)
   h1 Welcome to the Kingdom of Cyprus
   p Welcome to the website of the #[strong Kingdom of Cyprus], an ark designed to preserve all that is good in both the Christian faith and the English nation in these troubled times.
 
   if loggedIn
-    p #[i Logged in.]
+    h2 Interesting Pages
+    p There are so many ways you could begin your journey...
+    ul
+      li #[a(href="territory/kingdom") A description of the Kingdom];
+      li #[a(href="canons") Hosker's Canons</a>];
+      li #[a(href="search") Search] this site.
   else
+    h2 Log In
+    p Please log in to continue.
     form(action="/login", method="post")
       p
         | Username: 
