@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  profilebox.manor
+    h2 #{name}
+    figure.pbox
+      img.pbox-arms(src="/images/"+arms)
+    table.pbox
+      tr
+        td Master
+        td !{master}
+
+  h1 #{title}
+
+  p !{description}

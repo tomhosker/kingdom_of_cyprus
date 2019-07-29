@@ -43,8 +43,9 @@ const favicon = require("express-favicon");
 
 // Local imports.
 const indexRouter = require("./routes/index");
-const territorialRouter = require("./routes/territorial");
-const profileRouter = require("./routes/profile");
+const territorialRouter = require("./routes/territories");
+const peopleRouter = require("./routes/people");
+const profileRouter = require("./routes/profiles");
 
 // Constants.
 const notFound = 404;
@@ -55,6 +56,7 @@ var app = express();
 // View engine setup.
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+if(app.get("env") === "development") app.locals.pretty = true;
 
 // Use application-level middleware for common functionality, including
 // parsing and session handling.
@@ -77,10 +79,13 @@ app.use(favicon(__dirname+"/public/favicon.ico"));
 
 // ROUTES.
 app.use("/", indexRouter);
-app.use("/territory",
+app.use("/people",
+        require("connect-ensure-login").ensureLoggedIn(),
+        peopleRouter);
+app.use("/territories",
         require("connect-ensure-login").ensureLoggedIn(),
         territorialRouter);
-app.use("/profile",
+app.use("/profiles",
         require("connect-ensure-login").ensureLoggedIn(),
         profileRouter);
 app.get("/login",
@@ -100,7 +105,6 @@ app.get("/logout",
 
 // Catch 404 and forward to error handler.
 app.use(function(req, res, next){
-console.log(req);
   next(createError(notFound));
 });
 

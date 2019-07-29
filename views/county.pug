@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  profilebox.county
+    h2 #{name}
+    figure.pbox
+      img.pbox-arms(src="/images/"+arms)
+    table.pbox
+      tr
+        td Earl
+        td !{earl}
+      tr
+        td Comes
+        td !{comes}
+
+  h1 #{title}
+
+  p !{description}
+
+  h2 Baronies
+  table.mini
+    tr
+      th Barony
+      th Baron
+    for row in baronies
+      tr
+        for item in row
+          td !{item}

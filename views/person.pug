@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  profilebox(class=boxType)
+    p
+      if style != null
+        | #[i #{style}]
+        br
+        | #[span.big-and-strong #{shortTitle}]
+    figure.pbox
+      img.pbox(src="../images/"+profilePhoto)
+    table.pbox
+      if otherNames != null
+        tr
+          td Other Names
+          td #{otherNames}
+      tr
+        td Surname
+        td #{surname}
+      tr
+        td Forename
+        td #{forename}
+      tr
+        td Rank
+        td #{rank}
+      tr
+        td Addressed As
+        td ``#{addressedAs}''
+  h1 #{shortishTitle}
+  p !{bio}
+
+  h2 Cyprian Data
+  h3 Cyprian Legal Name
+  p #{cyprianLegalName}
+  if otherTitles != null
+    h4 Other Titles
+    p #{otherTitles}
+  if accolades != null
+    h4 Accolades
+    p !{accolades}
+  if arms != null
+    h4 Arms
+    p #{refTitle}'s coat of arms is given below:
+    img(src="../images/"+arms)
+
+  h2 Other Data
+  if otherData == null
+    p #[i None as yet.]
+  else
+    p #{otherData}

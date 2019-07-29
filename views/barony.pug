@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  profilebox.barony
+    h2 #{name}
+    figure.pbox
+      img.pbox-arms(src="/images/"+arms)
+    table.pbox
+      tr
+        td Baron
+        td !{baron}
+      tr
+        td Patricius
+        td !{patricius}
+
+  h1 #{title}
+
+  p !{description}
+
+  h2 Manors
+  table.mini
+    tr
+      th Manor
+      th Master
+    for row in manors
+      tr
+        for item in row
+          td !{item}

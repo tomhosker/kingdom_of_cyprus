@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  profilebox.duchy
+    h2 #{name}
+    figure.pbox
+      img.pbox-arms(src="../../images/"+arms)
+    table.pbox
+      tr
+        td Duke
+        td !{duke}
+      tr
+        td Strategos
+        td !{strategos}
+
+  h1 #{title}
+
+  p !{description}
+
+  h2 Counties
+  table.mini
+    tr
+      th County
+      th Earl
+    for row in counties
+      tr
+        for item in row
+          td !{item}

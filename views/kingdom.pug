@@ -5,12 +5,12 @@ block content
     h2 Kingdom of Cyprus
     figure
       img.kingdom-box(src="../images/badge.svg", alt="Badge of the Kingdom", align="center", height=140)
-      img.kingdom-box(src="../images/flag.svg", alt="Flag of the Kingdom", align="center", height=160)
+      img.kingdom-box(src="../images/flag.svg", alt="Flag of the Kingdom", align="center", height=150)
       figcaption Badge and flag of the Kingdom
-    table.profile-box
+    table.pbox
       tr
         td Motto
-        td BBBB
+        td Βασιλεὺς Βασιλέων Βασιλεύων Βασιλεύουσιν
       tr
         td Anthem
         td Te Deum
@@ -44,12 +44,18 @@ block content
   p The kingdom is organised along feudal lines, drawing inspiration chiefly from the English system of peerages and manorialism. Accordingly, the kingdom is divided into duchies, which are themselves further divided into counties, baronies and manors.
   table
     tr
-      for heading in duchiesHeadings
-        th #{heading}
+      th Name
+      th Duke
     for duchy in duchies
       tr
-        for datapoint in duchy
-          td #{datapoint}
+        td #[a(href="/territories/duchies/"+duchy.code) #{duchy.name}]
+        if duchy.dukeRankTier > constants.minRankTierForAbstractStyle
+          unless duchy.dukeStyle == null
+            td #{duchy.dukeStyle} #[a(href="/people/"+duchy.duke) #{duchy.dukeShortTitle}]
+          else
+            td #[a(href="/people/"+duchy.duke) #{duchy.dukeShortTitle}]
+        else
+          td #[a(href="/people/"+duchy.duke) #{duchy.dukeShortTitle}]
 
   h2 Government and Law
   p The kingdom is an absolute monarchy: all legitimate authority flows from the Cyprian crown. His Majesty the King exercises executive power through His Majesty's Government, and legislative power through promulgating letters patent. A register of such patents can be found #[a(href="../register") here].
