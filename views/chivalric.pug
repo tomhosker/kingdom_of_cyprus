@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  profilebox(class=boxType)
+    p
+      if style != null
+        | #[i #{style}]
+        br
+        | #[span.big-and-strong #{name}]
+      else
+        | #[span.big-and-strong #{name}]
+    if arms != null
+      figure.pbox
+        img.pbox-arms(src="/images/"+arms)
+    table.pbox
+      tr
+        td Master
+        td !{master}
+
+  h1 #{title}
+
+  p !{description}
+
+  h2 Accolades
+  p !{accolades}
+
+  h2 Members
+  for division in members
+    h3 #{division.accolade}
+    p !{division.holders}

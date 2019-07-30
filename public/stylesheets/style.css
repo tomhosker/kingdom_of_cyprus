@@ -107,7 +107,7 @@ profilebox {
   float: right;
   text-align: center;
   padding: 1em;
-  border-color: black;
+  border-color: gray;
   border-style: solid;
   border-width: 0px 0px 0px 5px;
 }
@@ -122,12 +122,12 @@ profilebox.kingdom {
 
 profilebox.duchy {
   border-color: black;
-  border-width: 0px 0px 0px 30px;
+  border-width: 0px 0px 0px 20px;
 }
 
 profilebox.county {
   border-color: black;
-  border-width: 0px 0px 0px 30px;
+  border-width: 0px 0px 0px 20px;
 }
 
 profilebox.barony {
@@ -152,6 +152,16 @@ profilebox.noble {
 
 profilebox.important {
   border-color: blue;
+  border-width: 0px 0px 0px 5px;
+}
+
+profilebox.cross {
+  border-color: red;
+  border-width: 0px 0px 0px 20px;
+}
+
+profilebox.chivalric {
+  border-color: black;
   border-width: 0px 0px 0px 5px;
 }
 

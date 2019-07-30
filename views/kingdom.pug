@@ -48,14 +48,8 @@ block content
       th Duke
     for duchy in duchies
       tr
-        td #[a(href="/territories/duchies/"+duchy.code) #{duchy.name}]
-        if duchy.dukeRankTier > constants.minRankTierForAbstractStyle
-          unless duchy.dukeStyle == null
-            td #{duchy.dukeStyle} #[a(href="/people/"+duchy.duke) #{duchy.dukeShortTitle}]
-          else
-            td #[a(href="/people/"+duchy.duke) #{duchy.dukeShortTitle}]
-        else
-          td #[a(href="/people/"+duchy.duke) #{duchy.dukeShortTitle}]
+        for item in duchy
+          td !{item}
 
   h2 Government and Law
   p The kingdom is an absolute monarchy: all legitimate authority flows from the Cyprian crown. His Majesty the King exercises executive power through His Majesty's Government, and legislative power through promulgating letters patent. A register of such patents can be found #[a(href="../register") here].

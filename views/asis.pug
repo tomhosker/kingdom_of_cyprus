@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  table
+    tr
+      for heading in headings
+        th #{heading}
+    for row in rows
+      tr
+        for item in row
+          td #{item}

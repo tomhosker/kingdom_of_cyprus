@@ -3,17 +3,17 @@ Set up the login system.
 */
 
 // Login imports.
-var passport = require("passport");
-var Strategy = require("passport-local").Strategy;
-var signingin = require("./signingin");
+const passport = require("passport");
+const Strategy = require("passport-local").Strategy;
+const signingin = require("./signingin");
 
 // Configure the local strategy for use by Passport.
 passport.use(new Strategy(
   function(username, password, cb) {
     signingin.users.findByUsername(username, function(err, user) {
-      if (err) { return cb(err); }
-      if (!user) { return cb(null, false); }
-      if (user.password != password) { return cb(null, false); }
+      if(err) { return cb(err); }
+      if(!user) { return cb(null, false); }
+      if(user.password !== password) { return cb(null, false); }
       return cb(null, user);
     });
   }));
@@ -43,15 +43,18 @@ const favicon = require("express-favicon");
 
 // Local imports.
 const indexRouter = require("./routes/index");
-const territorialRouter = require("./routes/territories");
+const stillsRouter = require("./routes/stills");
+const asisRouter = require("./routes/asis");
 const peopleRouter = require("./routes/people");
+const territorialRouter = require("./routes/territories");
+const chivalricRouter = require("./routes/chivalric");
 const profileRouter = require("./routes/profiles");
 
 // Constants.
 const notFound = 404;
 const internalServerError = 500;
 
-var app = express();
+const app = express();
 
 // View engine setup.
 app.set("views", path.join(__dirname, "views"));
@@ -79,12 +82,21 @@ app.use(favicon(__dirname+"/public/favicon.ico"));
 
 // ROUTES.
 app.use("/", indexRouter);
+app.use("/stills",
+        require("connect-ensure-login").ensureLoggedIn(),
+        stillsRouter);
+app.use("/asis",
+        require("connect-ensure-login").ensureLoggedIn(),
+        asisRouter);
 app.use("/people",
         require("connect-ensure-login").ensureLoggedIn(),
         peopleRouter);
 app.use("/territories",
         require("connect-ensure-login").ensureLoggedIn(),
         territorialRouter);
+app.use("/chivalric",
+        require("connect-ensure-login").ensureLoggedIn(),
+        chivalricRouter);
 app.use("/profiles",
         require("connect-ensure-login").ensureLoggedIn(),
         profileRouter);
