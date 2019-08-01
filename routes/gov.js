@@ -1,5 +1,5 @@
 /*
-This code handles tables retrieved from the database "as is".
+This code routes the Government page.
 */
 
 // Imports.
@@ -11,11 +11,11 @@ const Scraper = require("../lib/scraper.js");
 // Constants.
 const router = express.Router();
 
-// Return the home page.
-router.get("/:id", function(req, res, next){
+// Delivers the Government page.
+router.get("/", function(req, res, next){
   var scraper = new Scraper();
 
-  scraper.scrapeAsIs(req, res);
+  scraper.scrapeGov(req, res);
 });
 
 // Exports.

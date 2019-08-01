@@ -6,16 +6,16 @@ This code handles tables retrieved from the database "as is".
 const express = require("express");
 
 // Local imports.
-const Scraper = require("../lib/scraper.js");
+const CalendarMaker = require("../lib/calendarmaker.js");
 
 // Constants.
 const router = express.Router();
 
 // Return the home page.
-router.get("/:id", function(req, res, next){
-  var scraper = new Scraper();
+router.get("/", function(req, res, next){
+  var maker = new CalendarMaker();
 
-  scraper.scrapeAsIs(req, res);
+  maker.finalise(req, res);
 });
 
 // Exports.

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  ul
+    li #[a(href="/people") List of people];
+    li Lists of various types of territories:
+    ul
+      li #[a(href="/territories/duchies") List of duchies];
+      li #[a(href="/territories/counties") List of counties];
+      li #[a(href="/territories/baronies") List of baronies];
+      li #[a(href="/territories/manors") List of manors];
+    li #[a(href="/chivalric") List of chivalric orders];
+    li #[a(href="/patents") List of letters patent].

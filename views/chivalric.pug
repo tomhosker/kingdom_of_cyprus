@@ -15,16 +15,28 @@ block content
     table.pbox
       tr
         td Master
-        td !{master}
+        if master == null
+          td #[i None]
+        else
+          td !{master}
 
   h1 #{title}
 
   p !{description}
 
   h2 Accolades
-  p !{accolades}
+  if accolades.length == 0
+    p #[i None as yet]
+  else
+    p !{accolades}
 
   h2 Members
-  for division in members
-    h3 #{division.accolade}
-    p !{division.holders}
+  if accolades.length == 0
+    p #[i None as yet]
+  else
+    for division in members
+      h3 #{division.accolade}
+      if division.holders.length == 0
+        p #[i Not awarded]
+      else
+        p !{division.holders}

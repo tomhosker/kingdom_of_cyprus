@@ -48,6 +48,9 @@ const asisRouter = require("./routes/asis");
 const peopleRouter = require("./routes/people");
 const territorialRouter = require("./routes/territories");
 const chivalricRouter = require("./routes/chivalric");
+const govRouter = require("./routes/gov");
+const patentsRouter = require("./routes/patents");
+const calendarRouter = require("./routes/calendar");
 const profileRouter = require("./routes/profiles");
 
 // Constants.
@@ -97,6 +100,15 @@ app.use("/territories",
 app.use("/chivalric",
         require("connect-ensure-login").ensureLoggedIn(),
         chivalricRouter);
+app.use("/gov",
+        require("connect-ensure-login").ensureLoggedIn(),
+        govRouter);
+app.use("/patents",
+        require("connect-ensure-login").ensureLoggedIn(),
+        patentsRouter);
+app.use("/calendar",
+        require("connect-ensure-login").ensureLoggedIn(),
+        calendarRouter);
 app.use("/profiles",
         require("connect-ensure-login").ensureLoggedIn(),
         profileRouter);

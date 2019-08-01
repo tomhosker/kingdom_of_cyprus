@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  h1 His Majesty's Government
+
+  p #[b His Majesty's Government] is the means by which #[a(href="/people/rex") The King] exercises the executive power of the state.
+
+  h2 Great Officers of State
+
+  table.maxi
+    tr
+      th Title
+      th Holder
+    tr
+      td Chancellor
+      td !{chancellor}
+    tr
+      td Marshal
+      td !{marshal}
+    tr
+      td Steward
+      td !{steward}
+    tr
+      td Remembrancer
+      td !{remembrancer}
+    tr
+      td Ecclesiarch
+      td !{ecclesiarch}
+
+  h3 Deputy Officers of State
+
+  table.maxi
+    tr
+      th Title
+      th Superintendent
+      th Holder
+    tr
+      td Master of Offices
+      td Chancellor
+      td !{masterOfOffices}
+    tr
+      td Master of Horse
+      td Marshal
+      td !{masterOfHorse}
+    tr
+      td Master of the Rolls
+      td Steward
+      td !{masterOfTheRolls}
+    tr
+      td Master of the Bedchamber
+      td Remembrancer
+      td !{masterOfTheBedchamber}
+    tr
+      td Master of Alms
+      td Ecclesiarch
+      td !{masterOfAlms}
+
+  h2 Regent
+
+  p Should His Majesty be unable to discharge his duties, or should the office of king fall vacant, a #[b regent] shall be elected by the great officers of state above.
+
+  if data.regent == null
+    p At present there is no regent.
+  else
+    p At present the office of regent is held by !{regent}.

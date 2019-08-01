@@ -18,11 +18,14 @@ block content
   p !{description}
 
   h2 Counties
-  table.mini
-    tr
-      th County
-      th Earl
-    for row in counties
+  if counties.length == 0
+    p #[i None as yet.]
+  else
+    table.mini
       tr
-        for item in row
-          td !{item}
+        th County
+        th Earl
+      for row in counties
+        tr
+          td !{row[0]}
+          td !{row[1]}

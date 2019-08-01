@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  table.maxi
+    tr
+      th #{headings[0]}
+      th #{headings[1]}
+    for row in data
+      tr
+        td #{row.key}
+        td #[a(href=preKey+row.key) #{row.descriptor}]

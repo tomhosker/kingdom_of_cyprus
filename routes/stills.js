@@ -10,10 +10,10 @@ const Finaliser = require("../lib/finaliser.js");
 
 // Constants.
 const router = express.Router();
-const finaliser = new Finaliser();
 
 // Return a "still" page.
 router.get("/:id", function(req, res, next){
+  var finaliser = new Finaliser();
   var view = req.params.id;
   var theTitle = getTitle(view);
 
@@ -23,7 +23,9 @@ router.get("/:id", function(req, res, next){
 // Converts the view name into a page title.
 function getTitle(view)
 {
-  if(view === "strategoi") return "Strategoi, Comites and Patricii";
+  if(view === "tools") return "Tools";
+  else if(view === "lists") return "Lists";
+  else if(view === "strategoi") return "Strategoi, Comites and Patricii";
   else return "Could not find title";
 }
 

@@ -63,6 +63,14 @@ div.footer {
   font-size: small;
 }
 
+div.my-big {
+  font-size: large;
+}
+
+div.my-small {
+  font-size: small;
+}
+
 form {
   padding-left: 30px;
 }
@@ -168,6 +176,10 @@ profilebox.chivalric {
 span.big-and-strong {
   font-size: 170%;
   font-weight: bold;
+}
+
+span.frak {
+  font-family: fraktur;
 }
 
 table {

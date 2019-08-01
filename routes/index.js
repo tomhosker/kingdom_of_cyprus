@@ -10,10 +10,10 @@ const Finaliser = require("../lib/finaliser.js");
 
 // Constants.
 const router = express.Router();
-const finaliser = new Finaliser();
 
 // Return the home page.
 router.get("/", function(req, res, next){
+  var finaliser = new Finaliser();
   var isLoggedIn = true;
 
   if(req.user === undefined) isLoggedIn = false;
