@@ -130,7 +130,7 @@ profilebox.kingdom {
 
 profilebox.duchy {
   border-color: black;
-  border-width: 0px 0px 0px 20px;
+  border-width: 0px 0px 0px 25px;
 }
 
 profilebox.county {
@@ -140,7 +140,7 @@ profilebox.county {
 
 profilebox.barony {
   border-color: black;
-  border-width: 0px 0px 0px 30px;
+  border-width: 0px 0px 0px 15px;
 }
 
 profilebox.manor {
@@ -189,6 +189,10 @@ table {
 
 table.mini {
   width: 400px;
+}
+
+table.midi {
+  width: 1000px;
 }
 
 table.maxi {
