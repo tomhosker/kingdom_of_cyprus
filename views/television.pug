@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  profilebox.manor
+    h2 #{title}
+    figure.pbox
+      img.pbox-arms(src="/images/badgehoskerstelevision.svg")
+      figcaption Badge of #{title}
+
+  h1 #{title}
+
+  p #[b #{title}] is a list of the greatest television shows ever made.
+
+  h2 The Canon
+
+  table.midi
+    tr
+      th Title
+      th Start Year
+      th End Year
+      th Rank
+    for tvSeries in data
+      tr
+        if tvSeries.link == null
+          td #[i #{tvSeries.title}]
+        else
+          td #[i #[a(href=tvSeries.link) #{tvSeries.title}]]
+        td #{tvSeries.startYear}
+        td #{tvSeries.endYear}
+        td #{tvSeries.rank}

@@ -1,0 +1,189 @@
+extends layout
+
+block content
+  profilebox.manor
+    h2 #{title}
+    figure.pbox
+      img.pbox-arms(src="/images/badgehoskerscinema.svg")
+      figcaption Badge of #{title}
+
+  h1 #{title}
+
+  p #[b #{title}] is a list of the greatest films ever made.
+
+  p This particular canon is organised into five `books'. Book I contains #[i comedies] --- in the older sense of the word, meaning a drama with a happy ending and a generally optimistic outlook. Book II contains tragedies. Book III contains #[i satires] --- the term being used here to mean any film intended to induce laughter. Book IV contains films which do not fit neatly into any of the above three categories. Book V contains the best films --- from every category.
+
+  h2 The Canon
+
+  h3 Book I: Comedy
+
+  if bookI.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookI
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.rank}
+
+  h3 Book II: Tragedy
+
+  if bookII.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookII
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.rank}
+
+  h3 Book III: Satire
+
+  if bookIII.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookIII
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.rank}
+
+  h3 Book IV: Other
+
+  if bookIV.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookIV
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.rank}
+
+  h3 Book V: The Best
+
+  h4 Part 1: Comedy
+
+  if bookV.part1.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookV.part1
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.rank}
+
+  h4 Part 2: Tragedy
+
+  if bookV.part2.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookV.part2
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.rank}
+
+  h4 Part 3: Satire
+
+  if bookV.part3.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookV.part3
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.rank}
+
+  h4 Part 4: Other
+
+  if bookV.part4.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookV.part4
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.rank}
+
+  h4 Part 5: The Very Best
+
+  if bookV.part5.length == 0
+    p #[i No films as yet.]
+  else
+    table.midi
+      tr
+        th Title
+        th Year
+        th Rank
+      for film in bookV.part5
+        tr
+          if film.link == null
+            td #[i #{film.title}]
+          else
+            td #[i #[a(href=film.link) #{film.title}]]
+          td #{film.year}
+          td #{film.topTen}

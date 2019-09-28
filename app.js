@@ -53,6 +53,7 @@ const patentsRouter = require("./routes/patents");
 const calendarRouter = require("./routes/calendar");
 const profileRouter = require("./routes/profiles");
 const academyRouter = require("./routes/academy");
+const canonsRouter = require("./routes/canons");
 
 // Constants.
 const notFound = 404;
@@ -116,6 +117,9 @@ app.use("/profiles",
 app.use("/academy",
         require("connect-ensure-login").ensureLoggedIn(),
         academyRouter);
+app.use("/canons",
+        require("connect-ensure-login").ensureLoggedIn(),
+        canonsRouter);
 app.get("/login",
         function(req, res){
           res.redirect("/");

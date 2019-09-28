@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  profilebox.manor
+    h2 #{title}
+    figure.pbox
+      img.pbox-arms(src="/images/badgehoskersalbums.svg")
+      figcaption Badge of #{title}
+
+  h1 #{title}
+
+  p #[b #{title}] is a list of the greatest albums ever recorded.
+
+  h2 The Canon
+
+  table.midi
+    tr
+      th Title
+      th Year
+      th Artists
+      th Rank
+    for album in data
+      tr
+        if album.link == null
+          td #[i #{album.title}]
+        else
+          td #[i #[a(href=album.link) #{album.title}]]
+        if album.code == "hanthems"
+          td N/A
+        else
+          td #{album.year}
+        if album.artists == null
+          td N/A
+        else
+          td #{album.artists}
+        td #{album.rank}

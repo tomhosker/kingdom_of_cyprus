@@ -1,0 +1,123 @@
+extends layout
+
+block content
+  profilebox.manor
+    h2 #{title}
+    figure.pbox
+      img.pbox-arms(src="/images/badgehoskerscatalogue.svg")
+      figcaption Badge of #{title}
+
+  h1 #{title}
+
+  p #[b #{title}] is a list of the physical books owned by His Grace #[a(href="/person/hosker-ii") The Duke of Limassol], the underlying aspiration of which is to hold a copy of the poetical works of each poet appearing in #[a(href="/canons/almanack") Hosker's Almanack], as well as import works in the sacred languages.
+
+  h2 The Catalogue
+
+  h3 Sacred Languages
+
+  p #[i Many of the Jews read this title, for the place where Jesus was crucified was near the city; and it was written in Hebrew, in Latin, and in Greek.]
+
+  h4 Hebrew
+
+  table.midi
+    tr
+      th Author
+      th Title
+      th Year Published
+      th Notes
+    for book in sacredLanguages.hebrew
+      tr
+        if book.authorFullTitle == null
+          td N/A
+        else
+          td #{book.authorFullTitle}
+        td #[i #{book.title}]
+        td #{book.yearPublished}
+        if book.notes == null
+          td #[i None.]
+        else
+          td !{book.notes}
+
+  h4 Greek
+
+  table.midi
+    tr
+      th Author
+      th Title
+      th Year Published
+      th Notes
+    for book in sacredLanguages.greek
+      tr
+        if book.authorFullTitle == null
+          td N/A
+        else
+          td #{book.authorFullTitle}
+        td #[i #{book.title}]
+        td #{book.yearPublished}
+        if book.notes == null
+          td #[i None.]
+        else
+          td !{book.notes}
+
+  h4 Latin
+
+  table.midi
+    tr
+      th Author
+      th Title
+      th Year Published
+      th Notes
+    for book in sacredLanguages.latin
+      tr
+        if book.authorFullTitle == null
+          td N/A
+        else
+          td #{book.authorFullTitle}
+        td #[i #{book.title}]
+        td #{book.yearPublished}
+        if book.notes == null
+          td #[i None.]
+        else
+          td !{book.notes}
+
+  h3 Poetry
+
+  table.midi
+    tr
+      th Author
+      th Title
+      th Year Published
+      th Notes
+    for book in poetry
+      tr
+        if book.authorFullTitle == null
+          td N/A
+        else
+          td #{book.authorFullTitle}
+        td #[i #{book.title}]
+        td #{book.yearPublished}
+        if book.notes == null
+          td #[i None.]
+        else
+          td !{book.notes}
+
+  h3 Poetry-Related
+
+  table.midi
+    tr
+      th Author
+      th Title
+      th Year Published
+      th Notes
+    for book in poetryRelated
+      tr
+        if book.authorFullTitle == null
+          td N/A
+        else
+          td #{book.authorFullTitle}
+        td #[i #{book.title}]
+        td #{book.yearPublished}
+        if book.notes == null
+          td #[i None.]
+        else
+          td !{book.notes}

@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  profilebox.manor
+    h2 #{title}
+    figure.pbox
+      img.pbox-arms(src="/images/badgehoskersanthems.svg")
+      figcaption Badge of #{title}
+
+  h1 #{title}
+
+  p #[b #{title}] is a list of the greatest songs ever recorded.
+
+  h2 The Canon
+
+  table.midi
+    tr
+      th Title
+      th Artists
+      th Rank
+    for song in data
+      tr
+        if song.link == null
+          td &ldquo;#{song.title}&rdquo;
+        else
+          td &ldquo;#[a(href=song.link) #{song.title}]&rdquo;
+        if song.artists == null
+          td Unknown
+        else
+          td #{song.artists}
+        td #{song.rank}
