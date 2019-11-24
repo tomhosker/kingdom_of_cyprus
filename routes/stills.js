@@ -25,7 +25,7 @@ function getTitle(view)
 {
   if(view === "tools") return "Tools";
   else if(view === "lists") return "Lists";
-  else if(view === "strategoi") return "Strategoi, Comites and Patricii";
+  else if(view === "lieutenants") return "Lords-Palatine and -Lieutenant";
   else return "Could not find title";
 }
 
