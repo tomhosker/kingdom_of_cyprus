@@ -25,7 +25,8 @@ function getTitle(view)
 {
   if(view === "tools") return "Tools";
   else if(view === "lists") return "Lists";
-  else if(view === "lieutenants") return "Lords-Palatine and -Lieutenant";
+  else if(view === "lieutenants") return "Lords-Warden and -Lieutenant";
+  else if(view === "other_projects") return "Other Projects";
   else return "Could not find title";
 }
 
