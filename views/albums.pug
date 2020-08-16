@@ -25,12 +25,11 @@ block content
           td #[i #{album.title}]
         else
           td #[i #[a(href=album.link) #{album.title}]]
-        if album.code == "hanthems"
-          td N/A
-        else
-          td #{album.year}
         if album.artists == null
-          td N/A
+          td &mdash;
         else
           td #{album.artists}
-        td #{album.rank}
+        if album.rank
+          td #{album.rank}
+        else
+          td &mdash;

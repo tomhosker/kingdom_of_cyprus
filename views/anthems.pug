@@ -20,12 +20,17 @@ block content
       th Rank
     for song in data
       tr
-        if song.link == null
+        if song.internalLink
+          td &ldquo;#[a(href=song.internalLink) #{song.title}]&rdquo;
+        else if song.externalLink
+          td &ldquo;#[a(href=song.externalLink) #{song.title}]&rdquo;
+        else
           td &ldquo;#{song.title}&rdquo;
-        else
-          td &ldquo;#[a(href=song.link) #{song.title}]&rdquo;
-        if song.artists == null
-          td Unknown
-        else
+        if song.artists
           td #{song.artists}
-        td #{song.rank}
+        else
+          td &mdash;
+        if song.rank
+          td #{song.rank}
+        else
+          td &mdash;
