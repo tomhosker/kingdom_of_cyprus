@@ -1,35 +1,58 @@
 extends layout
 
 block content
-  profilebox.manor
-    h2 #{title}
-    figure.pbox
-      img.pbox-arms(src="/images/badgehoskersalbums.svg")
-      figcaption Badge of #{title}
+    profilebox.manor
+        h2 #{title}
+        figure.pbox
+            img.pbox-arms(src="/images/badgehoskersalbums.svg")
+            figcaption Badge of #{title}
 
-  h1 #{title}
+    h1 #{title}
 
-  p #[b #{title}] is a list of the greatest albums ever recorded.
+    p #[b #{title}] is a list of the greatest albums ever recorded.
 
-  h2 The Canon
-
-  table.midi
-    tr
-      th Title
-      th Year
-      th Artists
-      th Rank
-    for album in data
-      tr
-        if album.link == null
-          td #[i #{album.title}]
-        else
-          td #[i #[a(href=album.link) #{album.title}]]
-        if album.artists == null
-          td &mdash;
-        else
-          td #{album.artists}
-        if album.rank
-          td #{album.rank}
-        else
-          td &mdash;
+    h2 The Canon
+    table.midi
+        tr
+            th Title
+            th Year
+            th Artists
+            th Rank
+        for album in sorted
+            tr
+                if album.link
+                    td #[i #[a(href=album.link) #{album.title}]]
+                else
+                    td #[i #{album.title}]
+                if album.year
+                    td #{album.year}
+                else
+                    td &mdash;
+                if album.artists
+                    td #{album.artists}
+                else
+                    td &mdash;
+                if album.rank
+                    td #{album.rank}
+                else
+                    td &mdash;
+    h3 Unsorted
+    table.midi
+        tr
+            th Title
+            th Year
+            th Artists
+        for album in unsorted
+            tr
+                if album.link
+                    td #[i #[a(href=album.link) #{album.title}]]
+                else
+                    td #[i #{album.title}]
+                if album.year
+                    td #{album.year}
+                else
+                    td &mdash;
+                if album.artists
+                    td #{album.artists}
+                else
+                    td &mdash;

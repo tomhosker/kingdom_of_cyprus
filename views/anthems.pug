@@ -1,36 +1,52 @@
 extends layout
 
 block content
-  profilebox.manor
-    h2 #{title}
-    figure.pbox
-      img.pbox-arms(src="/images/badgehoskersanthems.svg")
-      figcaption Badge of #{title}
+    profilebox.manor
+        h2 #{title}
+        figure.pbox
+            img.pbox-arms(src="/images/badgehoskersanthems.svg")
+            figcaption Badge of #{title}
 
-  h1 #{title}
+    h1 #{title}
 
-  p #[b #{title}] is a list of the greatest songs ever recorded.
+    p #[b #{title}] is a list of the greatest songs ever recorded.
 
-  h2 The Canon
-
-  table.midi
-    tr
-      th Title
-      th Artists
-      th Rank
-    for song in data
-      tr
-        if song.internalLink
-          td &ldquo;#[a(href=song.internalLink) #{song.title}]&rdquo;
-        else if song.externalLink
-          td &ldquo;#[a(href=song.externalLink) #{song.title}]&rdquo;
-        else
-          td &ldquo;#{song.title}&rdquo;
-        if song.artists
-          td #{song.artists}
-        else
-          td &mdash;
-        if song.rank
-          td #{song.rank}
-        else
-          td &mdash;
+    h2 The Canon
+    table.midi
+        tr
+            th Title
+            th Artists
+            th Rank
+        for song in sorted
+            tr
+                if song.internalLink
+                    td #[a(href=song.internalLink) &ldquo;#{song.title}&rdquo;]
+                else if song.externalLink
+                    td #[a(href=song.externalLink) &ldquo;#{song.title}&rdquo;]
+                else
+                    td &ldquo;#{song.title}&rdquo;
+                if song.artists
+                    td #{song.artists}
+                else
+                    td &mdash;
+                if song.rank
+                    td #{song.rank}
+                else
+                    td &mdash;
+    h3 Unsorted
+    table.midi
+        tr
+            th Title
+            th Artists
+        for song in unsorted
+            tr
+                if song.internalLink
+                    td #[a(href=song.internalLink) &ldquo;#{song.title}&rdquo;]
+                else if song.externalLink
+                    td #[a(href=song.externalLink) &ldquo;#{song.title}&rdquo;]
+                else
+                    td &ldquo;#{song.title}&rdquo;
+                if song.artists
+                    td #{song.artists}
+                else
+                    td &mdash;
