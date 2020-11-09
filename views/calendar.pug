@@ -1,43 +1,46 @@
 extends layout
 
 block content
-  h1 #{title}
+    h1 #{title}
 
-  p Today's date is:
+    p Today's date is:
 
-  div.my-big
+    if greg.indexOf("11 Nov") >= 0
+        p It's the eleventh of the eleventh. You should listen to #[a(href="https://mega.nz/file/JANGBJZD#X6XYflxQ2igfEc4k3pap6CTD02ic0gP7R5JSnAFKRDU") &ldquo;The Flowers of the Forest&rdquo;] at least once.
+
+    div.my-big
+        ul
+            li !{cyprian} in the Cyprian calendar;
+            li !{sacred} in the Sacred calendar.
+            li !{greg} in the Gregorian calendar.
+
+    p Today's colour is #[b !{sacredColour}] with respect to the Sacred calendar.
+
+    div.my-small
+        p Timestamp check: !{utcTimestamp}
+
+    h2 Explanatory Notes
+    h3 Cyprian Calendar
+    p The #[b Cyprian calendar] is the primary official calendar of the kingdom. It is, essentially, the Hebrew calendar, but with the following modifications:
     ul
-      li !{cyprian} in the Cyprian calendar;
-      li !{sacred} in the Sacred calendar.
-      li !{greg} in the Gregorian calendar.
-
-  p Today's colour is #[b !{sacredColour}] with respect to the Sacred calendar.
-
-  div.my-small
-    p Timestamp check: !{utcTimestamp}
-
-  h2 Explanatory Notes
-  h3 Cyprian Calendar
-  p The #[b Cyprian calendar] is the primary official calendar of the kingdom. It is, essentially, the Hebrew calendar, but with the following modifications:
-  ul
-    li Months are renamed:
-    ul
-      li Nisan = Primilis,
-      li Iyyar = Sectilis,
-      li Sivan = Tertilis,
-      li Tammuz = Quartilis,
-      li Av = Quintilis,
-      li Elul = Sextilis,
-      li Tishrei = September,
-      li Heshvan = October,
-      li Kislev = November,
-      li Tevet = December,
-      li Shevat = Unodecember,
-      li Adar I = Intercalaris,
-      li Adar/Adar II = Duodecember;
-    li Years are numbered according to the year in the reign of the current King of Cyprus;
-    li Years are incremented on the first day of Nisan/Primilis, and not in Tishrei/September.
-  h3 Sacred Calendar
-  p The Sacred calendar is a secondary official calendar, used in the calculation of the dates of the various Christian festivals and holy days.
-  h3 Gregorian Calendar
-  p The Gregorian calendar is another secondary official calendar, used for making complicated calculations and synchronising between calendars.
+        li Months are renamed:
+        ul
+            li Nisan = Primilis,
+            li Iyyar = Sectilis,
+            li Sivan = Tertilis,
+            li Tammuz = Quartilis,
+            li Av = Quintilis,
+            li Elul = Sextilis,
+            li Tishrei = September,
+            li Heshvan = October,
+            li Kislev = November,
+            li Tevet = December,
+            li Shevat = Unodecember,
+            li Adar I = Intercalaris,
+            li Adar/Adar II = Duodecember;
+        li Years are numbered according to the year in the reign of the current King of Cyprus;
+        li Years are incremented on the first day of Nisan/Primilis, and not in Tishrei/September.
+    h3 Sacred Calendar
+    p The Sacred calendar is a secondary official calendar, used in the calculation of the dates of the various Christian festivals and holy days.
+    h3 Gregorian Calendar
+    p The Gregorian calendar is another secondary official calendar, used for making complicated calculations and synchronising between calendars.
