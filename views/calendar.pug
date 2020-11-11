@@ -3,10 +3,10 @@ extends layout
 block content
     h1 #{title}
 
-    p Today's date is:
-
     if greg.indexOf("11 Nov") >= 0
-        p It's the eleventh of the eleventh. You should listen to #[a(href="https://mega.nz/file/JANGBJZD#X6XYflxQ2igfEc4k3pap6CTD02ic0gP7R5JSnAFKRDU") &ldquo;The Flowers of the Forest&rdquo;] at least once.
+        p #[i It's the eleventh of the eleventh. You should listen to #[a(href="https://mega.nz/file/JANGBJZD#X6XYflxQ2igfEc4k3pap6CTD02ic0gP7R5JSnAFKRDU") &ldquo;The Flowers of the Forest&rdquo;] at least once.]
+
+    p Today's date is:
 
     div.my-big
         ul
