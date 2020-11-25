@@ -1,34 +1,35 @@
 var records = [
-    { id: 1, username: "admin", password: "guest" }
+    { id: 1, username: "admin", password: "guest" },
+    { id: 2, username: "dad", password: "guest" }
 ];
 
 exports.findById = function(id, cb){
-  process.nextTick(function(){
-    var idx = id-1;
+    process.nextTick(function(){
+        var idx = id-1;
 
-    if(records[idx])
-    {
-      cb(null, records[idx]);
-    }
-    else
-    {
-      cb(new Error("User "+id+" does not exist."));
-    }
-  });
+        if(records[idx])
+        {
+            cb(null, records[idx]);
+        }
+        else
+        {
+            cb(new Error("User "+id+" does not exist."));
+        }
+    });
 }
 
 exports.findByUsername = function(username, cb){
-  process.nextTick(function(){
-    var record;
+    process.nextTick(function(){
+        var record;
 
-    for(var i = 0; i < records.length; i++)
-    {
-      record = records[i];
-      if(record.username === username)
-      {
-        return cb(null, record);
-      }
-    }
-    return cb(null, null);
-  });
+        for(var i = 0; i < records.length; i++)
+        {
+            record = records[i];
+            if(record.username === username)
+            {
+                return cb(null, record);
+            }
+        }
+        return cb(null, null);
+    });
 }

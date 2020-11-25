@@ -15,7 +15,6 @@ block content
     table.midi
         tr
             th Title
-            th Year
             th Artists
             th Rank
         for album in sorted
@@ -24,10 +23,6 @@ block content
                     td #[i #[a(href=album.link) #{album.title}]]
                 else
                     td #[i #{album.title}]
-                if album.year
-                    td #{album.year}
-                else
-                    td &mdash;
                 if album.artists
                     td #{album.artists}
                 else
@@ -36,11 +31,11 @@ block content
                     td #{album.rank}
                 else
                     td &mdash;
-    h3 Unsorted
+
+    h2 Deuterocanon
     table.midi
         tr
             th Title
-            th Year
             th Artists
         for album in unsorted
             tr
@@ -48,10 +43,6 @@ block content
                     td #[i #[a(href=album.link) #{album.title}]]
                 else
                     td #[i #{album.title}]
-                if album.year
-                    td #{album.year}
-                else
-                    td &mdash;
                 if album.artists
                     td #{album.artists}
                 else
