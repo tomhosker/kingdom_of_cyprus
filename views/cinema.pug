@@ -199,7 +199,6 @@ block content
             for film in deuterocanon
                 tr
                     td #{deuterocanon.indexOf(film)+1}
-                    td #{film.rank}
                     if film.internalLink
                         td #[i #[a(href=film.internalLink) #{film.title}]]
                     else if film.externalLink
