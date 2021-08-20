@@ -1,5 +1,6 @@
 # CUSTOM
-package-lock.json # Pushing this breaks Heroku.
+package-lock.json
+# Pushing this breaks Heroku.
 
 # Logs
 logs
