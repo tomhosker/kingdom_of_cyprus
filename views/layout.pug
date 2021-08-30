@@ -1,11 +1,12 @@
 doctype html
 html
-  head
-    title KoC | #{title}
-    link(rel="stylesheet", href="/stylesheets/style.css")
-    link(rel="favicon", href="favicon.ico")
-  body
-    div.header
-    block content
-    div.footer
-      p Property of His Majesty's Government | #[a(href="/") Home] | #[a(href="/stills/tools") Tools] | #[a(href="/logout") Log out] | Accessed: !{footdate}
+    head
+        title KoC | #{title}
+        link(rel="stylesheet", href="/stylesheets/style.css")
+        link(rel="favicon", href="favicon.ico")
+    body
+        div.header
+        bbox
+            block content
+        div.footer
+            p Property of His Majesty's Government | #[a(href="/") Home] | #[a(href="/stills/tools") Tools] | #[a(href="/logout") Log out] | Accessed: !{footdate}
