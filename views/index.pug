@@ -7,21 +7,9 @@ block content
         blockquote #[i Make me an instrument of your peace.]
     p Welcome to the website of the #[strong Kingdom of Cyprus], a structure intended to preserve the incorporeal treasures of both Christian and English heritage through these difficult times.
 
-    if loggedIn
-        h2 Interesting Pages
-        p There are so many ways you could begin your journey...
-        ul
-            li #[a(href="/territories/kingdom") A description of the Kingdom];
-            li #[a(href="/canons") Hosker's Canons</a>];
-            li #[a(href="/stills/other_projects") Other projects].
-    else
-        h2 Log In
-        p Please log in to continue.
-        form(action="/login", method="post")
-            p
-                | Username: 
-                input(type="text", name="username")
-            p
-                | Password: 
-                input(type="password", name="password")
-            input(type="submit", value="Submit")
+    h2 Interesting Pages
+    p There are so many ways you could begin your journey...
+    ul
+        li #[a(href="/territories/kingdom") A description of the Kingdom];
+        li #[a(href="/canons") Hosker's Canons</a>];
+        li #[a(href="/stills/other_projects") Other projects].

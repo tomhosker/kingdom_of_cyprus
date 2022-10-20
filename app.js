@@ -1,35 +1,4 @@
 /*
-Set up the login system.
-*/
-
-// Login imports.
-const passport = require("passport");
-const Strategy = require("passport-local").Strategy;
-const signingin = require("./signingin");
-
-// Configure the local strategy for use by Passport.
-passport.use(new Strategy(
-  function(username, password, cb) {
-    signingin.users.findByUsername(username, function(err, user) {
-      if(err) { return cb(err); }
-      if(!user) { return cb(null, false); }
-      if(user.password !== password) { return cb(null, false); }
-      return cb(null, user);
-    });
-  }));
-
-// Configure Passport authenticated session persistence.
-passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
-});
-passport.deserializeUser(function(id, cb) {
-  signingin.users.findById(id, function (err, user) {
-    if (err) { return cb(err); }
-    cb(null, user);
-  });
-});
-
-/*
 This is where it all begins.
 */
 
@@ -56,9 +25,10 @@ const academyRouter = require("./routes/academy");
 const canonsRouter = require("./routes/canons");
 
 // Constants.
-const notFound = 404;
-const internalServerError = 500;
+const NOT_FOUND = 404;
+const INTERNAL_SERVER_ERROR = 500;
 
+// Constant objects.
 const app = express();
 
 // View engine setup.
@@ -69,13 +39,9 @@ if(app.get("env") === "development") app.locals.pretty = true;
 // Use application-level middleware for common functionality, including
 // parsing and session handling.
 app.use(require("body-parser").urlencoded({ extended: true }));
-app.use(require("express-session")({ secret: "keyboard cat", resave: false,
-                                     saveUninitialized: false }));
-
-// Initialise Passport and restore authentication state, if any, from the
-// session.
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(require("express-session")({
+    secret: "keyboard cat", resave: false, saveUninitialized: false
+}));
 
 // Initialise some other resources.
 app.use(logger("dev"));
@@ -87,67 +53,31 @@ app.use(favicon(__dirname+"/public/favicon.ico"));
 
 // ROUTES.
 app.use("/", indexRouter);
-app.use("/stills",
-        require("connect-ensure-login").ensureLoggedIn(),
-        stillsRouter);
-app.use("/asis",
-        require("connect-ensure-login").ensureLoggedIn(),
-        asisRouter);
-app.use("/people",
-        require("connect-ensure-login").ensureLoggedIn(),
-        peopleRouter);
-app.use("/territories",
-        require("connect-ensure-login").ensureLoggedIn(),
-        territorialRouter);
-app.use("/chivalric",
-        require("connect-ensure-login").ensureLoggedIn(),
-        chivalricRouter);
-app.use("/gov",
-        require("connect-ensure-login").ensureLoggedIn(),
-        govRouter);
-app.use("/patents",
-        require("connect-ensure-login").ensureLoggedIn(),
-        patentsRouter);
-app.use("/calendar",
-        require("connect-ensure-login").ensureLoggedIn(),
-        calendarRouter);
-app.use("/profiles",
-        require("connect-ensure-login").ensureLoggedIn(),
-        profileRouter);
-app.use("/academy",
-        require("connect-ensure-login").ensureLoggedIn(),
-        academyRouter);
-app.use("/canons",
-        require("connect-ensure-login").ensureLoggedIn(),
-        canonsRouter);
-app.get("/login",
-        function(req, res){
-          res.redirect("/");
-        });
-app.post("/login", 
-  passport.authenticate("local", { failureRedirect: "/login" }),
-  function(req, res) {
-    res.redirect("/");
-  });
-app.get("/logout",
-  function(req, res){
-    req.logout();
-    res.redirect("/");
-  });
+app.use("/stills", stillsRouter);
+app.use("/asis", asisRouter);
+app.use("/people", peopleRouter);
+app.use("/territories", territorialRouter);
+app.use("/chivalric", chivalricRouter);
+app.use("/gov", govRouter);
+app.use("/patents", patentsRouter);
+app.use("/calendar", calendarRouter);
+app.use("/profiles", profileRouter);
+app.use("/academy", academyRouter);
+app.use("/canons", canonsRouter);
 
 // Catch 404 and forward to error handler.
 app.use(function(req, res, next){
-  next(createError(notFound));
+    next(createError(NOT_FOUND));
 });
 
 // Error handler.
 app.use(function(err, req, res, next) {
-  // Set locals, only providing error in development.
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-  // Render the error page.
-  res.status(err.status || internalServerError);
-  res.render("error");
+    // Set locals, only providing error in development.
+    res.locals.message = err.message;
+    res.locals.error = req.app.get("env") === "development" ? err : {};
+    // Render the error page.
+    res.status(err.status || INTERNAL_SERVER_ERROR);
+    res.render("error");
 });
 
 // Exports.
