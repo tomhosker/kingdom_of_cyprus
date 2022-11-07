@@ -30,12 +30,22 @@ a:link {
 
 a:hover {
     text-decoration: underline;
-    color: blue;
 }
 
 a:visited {
-    text-decoration: none;
     color: blue;
+}
+
+a.red:link {
+    color: red;
+}
+
+a.red:hover {
+    text-decoration: underline;
+}
+
+a.red:visited {
+    color: red;
 }
 
 bbox {
@@ -98,14 +108,7 @@ img.pbox {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
-}
-
-img.pbox-arms {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+    width: 70%;
 }
 
 figure.pbox {

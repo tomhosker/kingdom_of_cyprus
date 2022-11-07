@@ -6,15 +6,13 @@ block content
             if style
                 | #[i #{style}]
                 br
-                | #[span.big-and-strong #{shortTitle}]
-            else
-                | #[span.big-and-strong #{shortTitle}]
+            | #[span.big-and-strong #{shortTitle}]
         figure.pbox
-            img.pbox(src="/images/"+profilePhoto)
+            img.pbox(src="/images/"+arms)
         table.pbox
-            if otherNames
+            if knownAs
                 tr
-                    td Other Names
+                    td Known as
                     td #{otherNames}
             tr
                 td Surname
@@ -34,19 +32,13 @@ block content
     h2 Cyprian Data
     h3 Cyprian Legal Name
     p #{cyprianLegalName}
-    if otherTitles != null
-        h4 Other Titles
-        p #{otherTitles}
-    if accolades != null
+    if accolades
         h4 Accolades
         p !{accolades}
-    if arms != null
-        h4 Arms
-        p #{refTitle}'s coat of arms is given below:
-        img(src="/images/"+arms, width=900)
 
     h2 Other Data
-    if otherData
-        p !{otherData}
+    if family
+        h3 Family
+        p !{family}
     else
         p #[i None as yet.]
