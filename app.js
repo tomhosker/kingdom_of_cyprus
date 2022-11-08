@@ -84,5 +84,15 @@ app.use(function (err, req, res, next) {
     res.render("error");
 });
 
+// Listen, and tell the programmer where to find the website.
+app.listen(app.get("port"), function () {
+    console.log("App running at port number: " + app.get("port"));
+    console.log(
+        "If running locally, navigate to: http://localhost:" +
+        app.get("port") +
+        "/"
+    );
+});
+
 // Exports.
 module.exports = app;
