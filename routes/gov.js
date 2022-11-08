@@ -12,10 +12,10 @@ const Scraper = require("../lib/scraper.js");
 const router = express.Router();
 
 // Delivers the Government page.
-router.get("/", function(req, res, next){
-  var scraper = new Scraper();
+router.get("/", function (req, res, next) {
+    var scraper = new Scraper();
 
-  scraper.scrapeGov(req, res);
+    scraper.scrapeGov(req, res);
 });
 
 // Exports.

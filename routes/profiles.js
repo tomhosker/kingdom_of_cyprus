@@ -12,12 +12,14 @@ const Finaliser = require("../lib/finaliser.js");
 const router = express.Router();
 
 // Return the home page.
-router.get("/", function(req, res, next){
-  var finaliser = new Finaliser();
-  var theTitle = "User: "+req.user.username;
+router.get("/", function (req, res, next) {
+    var finaliser = new Finaliser();
+    var theTitle = "User: " + req.user.username;
 
-  finaliser.protoRender(req, res, "profile",
-                        { title: theTitle, user: req.user });
+    finaliser.protoRender(req, res, "profile", {
+        title: theTitle,
+        user: req.user
+    });
 });
 
 // Exports.

@@ -12,10 +12,10 @@ const Scraper = require("../lib/scraper.js");
 const router = express.Router();
 
 // Handle a request for the Patent page.
-router.get("/", function(req, res, next){
-  var scraper = new Scraper();
+router.get("/", function (req, res, next) {
+    var scraper = new Scraper();
 
-  scraper.scrapePatent(req, res);
+    scraper.scrapePatent(req, res);
 });
 
 // Exports.

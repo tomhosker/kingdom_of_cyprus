@@ -70,7 +70,7 @@ div.header {
     background-color: white;
     background-image: url("banner.png");
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
 div.content {
@@ -118,8 +118,7 @@ figure.pbox {
     width: 100%;
 }
 
-figure.kingdom-box
-{
+figure.kingdom-box {
     margin-top: 0em;
 }
 
@@ -225,7 +224,8 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-td, th {
+td,
+th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;

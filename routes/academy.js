@@ -13,24 +13,24 @@ const Scraper = require("../lib/scraper.js");
 const router = express.Router();
 
 // Return the page for the whole Academy.
-router.get("/", function(req, res, next){
-  var scraper = new Scraper();
+router.get("/", function (req, res, next) {
+    var scraper = new Scraper();
 
-  scraper.scrapeAcademy(req, res);
+    scraper.scrapeAcademy(req, res);
 });
 
 // Handle the various faculty pages.
-router.get("/faculty/:id", function(req, res, next){
-  var scraper = new Scraper();
+router.get("/faculty/:id", function (req, res, next) {
+    var scraper = new Scraper();
 
-  scraper.scrapeFaculty(req, res);
+    scraper.scrapeFaculty(req, res);
 });
 
 // Handle the various department pages.
-router.get("/department/:id", function(req, res, next){
-  var scraper = new Scraper();
+router.get("/department/:id", function (req, res, next) {
+    var scraper = new Scraper();
 
-  scraper.scrapeFacultyDepartment(req, res);
+    scraper.scrapeFacultyDepartment(req, res);
 });
 
 // Exports.

@@ -34,14 +34,18 @@ const app = express();
 // View engine setup.
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
-if(app.get("env") === "development") app.locals.pretty = true;
+if (app.get("env") === "development") app.locals.pretty = true;
 
 // Use application-level middleware for common functionality, including
 // parsing and session handling.
 app.use(require("body-parser").urlencoded({ extended: true }));
-app.use(require("express-session")({
-    secret: "keyboard cat", resave: false, saveUninitialized: false
-}));
+app.use(
+    require("express-session")({
+        secret: "keyboard cat",
+        resave: false,
+        saveUninitialized: false
+    })
+);
 
 // Initialise some other resources.
 app.use(logger("dev"));
@@ -49,7 +53,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static("public"));
-app.use(favicon(__dirname+"/public/favicon.ico"));
+app.use(favicon(__dirname + "/public/favicon.ico"));
 
 // ROUTES.
 app.use("/", indexRouter);
@@ -66,12 +70,12 @@ app.use("/academy", academyRouter);
 app.use("/canons", canonsRouter);
 
 // Catch 404 and forward to error handler.
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
     next(createError(NOT_FOUND));
 });
 
 // Error handler.
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // Set locals, only providing error in development.
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};

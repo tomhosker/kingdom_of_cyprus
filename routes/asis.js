@@ -12,10 +12,10 @@ const Scraper = require("../lib/scraper.js");
 const router = express.Router();
 
 // Return the home page.
-router.get("/:id", function(req, res, next){
-  var scraper = new Scraper();
+router.get("/:id", function (req, res, next) {
+    var scraper = new Scraper();
 
-  scraper.scrapeAsIs(req, res);
+    scraper.scrapeAsIs(req, res);
 });
 
 // Exports.

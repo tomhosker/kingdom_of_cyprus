@@ -12,10 +12,10 @@ const CalendarMaker = require("../lib/calendarmaker.js");
 const router = express.Router();
 
 // Return the home page.
-router.get("/", function(req, res, next){
-  var maker = new CalendarMaker();
+router.get("/", function (req, res, next) {
+    var maker = new CalendarMaker();
 
-  maker.finalise(req, res);
+    maker.finalise(req, res);
 });
 
 // Exports.
