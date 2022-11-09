@@ -1,16 +1,14 @@
 extends layout
 
 block content
+    h1 Register of Letters Patent
 
-  h1 Register of Letters Patent
-
-  p There follows a register of all letters patent issued by His Majesty #[a(href="/people/rex") The King], or by a regent acting on His Majesty's behalf.
-
-  table.maxi
-    tr
-      th Name
-      th Issued
-    for row in patents
-      tr
-        td !{row[0]}
-        td !{row[1]}
+    p There follows a register of all letters patent issued by His Majesty #[a(href="/people/rex") The King], or by a regent acting on His Majesty's behalf.
+    table.maxi
+        tr
+            th Name
+            th Issued
+        for row in patents
+            tr
+                td !{row[0]}
+                td !{row[1]}

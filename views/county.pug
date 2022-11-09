@@ -1,28 +1,28 @@
 extends layout
 
 block content
-  profilebox.county
-    h2 #{name}
-    figure.pbox
-      img.pbox-arms(src="/images/"+arms)
-    table.pbox
-      tr
-        td Earl
-        td !{earl}
-      tr
-        td #[a(href="/stills/lieutenants") Lord-Lieutenant]
-        td !{lordLieutenant}
+    profilebox.county
+        h2 #{name}
+        figure.pbox
+            img.pbox(src="/images/"+arms)
+        table.pbox
+            tr
+                td Earl
+                td !{earl}
+            tr
+                td #[a(href="/stills/lieutenants") Lord-Lieutenant]
+                td !{lordLieutenant}
 
-  h1 #{title}
+    h1 #{title}
 
-  p !{description}
+    p !{description}
 
-  h2 Baronies
-  table.mini
-    tr
-      th Barony
-      th Baron
-    for row in baronies
-      tr
-        for item in row
-          td !{item}
+    h2 Baronies
+    table.mini
+        tr
+            th Barony
+            th Baron
+        for row in baronies
+            tr
+                for item in row
+                    td !{item}

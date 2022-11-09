@@ -1,34 +1,33 @@
 extends layout
 
 block content
-  profilebox.barony
-    h2 #{title}
-    if arms != null
-      figure.pbox
-        img.pbox-arms(src="/images/"+arms)
-    table.pbox
-      tr
-        td Pro-Vice-Chancellor
-        if proViceChancellor == null
-          td His Majesty #[a(href="/people/rex") The King]
+    profilebox.barony
+        h2 #{title}
+        if arms
+            figure.pbox
+                img.pbox(src="/images/"+arms)
+        table.pbox
+            tr
+                td Pro-Vice-Chancellor
+                if proViceChancellor
+                    td !{proViceChancellor}
+                else
+                    td #[a(href="/people/rex") His Majesty]
+
+    h1 #{title}
+
+    if description
+        p !{description}
+    else
+        p The #[b #{title}] is a constituent faculty of the #[a(href="/academy") Royal Cyprian Academy].
+
+    h2 Departments
+    if code == "fine"
+        p The faculty contains no departments as such, but it administers #[a(href="/canons") Hosker's Canons].
+    else
+        if departments.length == 0
+            p #[i None as yet.]
         else
-          td !{proViceChancellor}
-
-  h1 #{title}
-
-  if description == null
-    p The #[b #{title}] is a constituent faculty of the #[a(href="/academy") Royal Cyprian Academy].
-  else
-    p !{description}
-
-  h2 Departments
-
-  if departments.length == 0
-    p #[i None as yet.]
-  else
-    ul
-      for department in departments
-        if departments.indexOf(department) == departments.length-1
-          li #[a(href="/academy/department/"+department.code) !{department.name}].
-        else
-          li #[a(href="/academy/department/"+department.code) !{department.name}];
+            ul
+                for department in departments
+                    li #[a(href="/academy/department/"+department.code) !{department.name}]

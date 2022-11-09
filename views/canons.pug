@@ -1,28 +1,26 @@
 extends layout
 
 block content
-  profilebox.barony
-    h2 #{title}
-    figure.pbox
-      img.pbox-arms(src="/images/badgehoskerscanons.svg")
-      figcaption Badge of #{title}
+    profilebox.barony
+        h2 #{title}
+        figure.pbox
+            img.pbox(src="/images/badgehoskerscanons.svg")
+            figcaption Badge of #{title}
 
-  h1 #{title}
+    h1 #{title}
 
-  p #[b #{title}] represent an attempt to discern, preserve and rank the very best incorporeal cultural achievements, particularly those produced by the English-speaking peoples.
+    p #[b #{title}] represent an attempt to discern, preserve and rank the very best incorporeal cultural achievements, particularly those produced by the English-speaking peoples.
 
-  h2 Individual Canons
-
-  p Hosker's Canons are a mosaic of projects, rather than a monolith:
-
-  ul
-    li #[a(href="canons/almanack") Hosker's Almanack],
+    h2 Individual Canons
+    p Hosker's Canons are a mosaic of projects, rather than a monolith:
     ul
-      li #[a(href="canons/library") Hosker's Library],
-      li #[a(href="canons/catalogue") Hosker's Catalogue],
-    li #[a(href="canons/cinema") Hosker's Cinema],
-    ul
-      li #[a(href="canons/television") Hosker's Television],
-    li #[a(href="canons/albums") Hosker's Albums],
-    ul
-      li #[a(href="canons/anthems") Hosker's Anthems].
+        li #[a(href="canons/almanack") Hosker's Almanack],
+        ul
+            li #[a(href="canons/library") Hosker's Library],
+            li #[a(href="canons/catalogue") Hosker's Catalogue],
+        li #[a(href="canons/cinema") Hosker's Cinema],
+        ul
+            li #[a(href="canons/television") Hosker's Television],
+        li #[a(href="canons/albums") Hosker's Albums],
+        ul
+            li #[a(href="canons/anthems") Hosker's Anthems].

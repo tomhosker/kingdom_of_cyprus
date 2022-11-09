@@ -1,22 +1,22 @@
 extends layout
 
 block content
-  h1 #{title}
+    h1 #{title}
 
-  p The #[b territories] of the #[a(href="/territories/kingdom") Kingdom of Cyprus] follow the are arranged in the following hierarchy:
+    p The #[b territories] of the #[a(href="/territories/kingdom") Kingdom of Cyprus] follow the are arranged in the following hierarchy:
 
-  ul
-    li #[a(href="/territories/duchies") Duchies], which are divided into...
     ul
-      li #[a(href="/territories/counties") Counties], which are divided into...
-      ul
-        li #[a(href="/territories/baronies") Baronies], which are divided into...
+        li #[a(href="/territories/duchies") Duchies], which are divided into...
         ul
-          li #[a(href="/territories/manors") Manors].
+            li #[a(href="/territories/counties") Counties], which are divided into...
+            ul
+                li #[a(href="/territories/baronies") Baronies], which are divided into...
+                ul
+                    li #[a(href="/territories/manors") Manors].
 
-  h2 Non-Standard Divisions
-  ul
-    li Duchies are exceptionally divided into #[i marches];
-    li Counties are exceptionally divided into #[i viscounties];
-    li Baronies are exceptionally divided into #[i baronetships];
-    li Manors are exceptionally divided into #[i wards].
+    h2 Non-Standard Divisions
+    ul
+        li Duchies are exceptionally divided into #[i marches];
+        li Counties are exceptionally divided into #[i viscounties];
+        li Baronies are exceptionally divided into #[i baronetships];
+        li Manors are exceptionally divided into #[i wards].

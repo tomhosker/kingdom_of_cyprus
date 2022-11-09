@@ -1,31 +1,31 @@
 extends layout
 
 block content
-  profilebox.duchy
-    h2 #{name}
-    figure.pbox
-      img.pbox-arms(src="../../images/"+arms)
-    table.pbox
-      tr
-        td Duke
-        td !{duke}
-      tr
-        td #[a(href="/stills/lieutenants") Lord-Warden]
-        td !{lordWarden}
+    profilebox.duchy
+        h2 #{name}
+        figure.pbox
+            img.pbox(src="../../images/"+arms)
+        table.pbox
+            tr
+                td Duke
+                td !{duke}
+            tr
+                td #[a(href="/stills/lieutenants") Lord-Warden]
+                td !{lordWarden}
 
-  h1 #{title}
+    h1 #{title}
 
-  p !{description}
+    p !{description}
 
-  h2 Counties
-  if counties.length == 0
-    p #[i None as yet.]
-  else
-    table.mini
-      tr
-        th County
-        th Earl
-      for row in counties
-        tr
-          td !{row[0]}
-          td !{row[1]}
+    h2 Counties
+    if counties.length == 0
+        p #[i None as yet.]
+    else
+        table.mini
+            tr
+                th County
+                th Earl
+            for row in counties
+                tr
+                    td !{row[0]}
+                    td !{row[1]}

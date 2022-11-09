@@ -1,42 +1,42 @@
 extends layout
 
 block content
-  profilebox(class=boxType)
-    p
-      if style != null
-        | #[i #{style}]
-        br
-        | #[span.big-and-strong #{name}]
-      else
-        | #[span.big-and-strong #{name}]
-    if arms != null
-      figure.pbox
-        img.pbox-arms(src="/images/"+arms)
-    table.pbox
-      tr
-        td Master
-        if master == null
-          td #[i None]
-        else
-          td !{master}
+    profilebox(class=boxType)
+        p
+            if style
+                | #[i #{style}]
+                br
+                | #[span.big-and-strong #{name}]
+            else
+                | #[span.big-and-strong #{name}]
+        if arms
+            figure.pbox
+                img.pbox(src="/images/"+arms)
+        table.pbox
+            tr
+                td Master
+                if master
+                    td !{master}
+                else
+                    td #[i None]
 
-  h1 #{title}
+    h1 #{title}
 
-  p !{description}
+    p !{description}
 
-  h2 Accolades
-  if accolades.length == 0
-    p #[i None as yet]
-  else
-    p !{accolades}
+    h2 Accolades
+    if accolades.length == 0
+        p #[i None as yet]
+    else
+        p !{accolades}
 
-  h2 Members
-  if accolades.length == 0
-    p #[i None as yet]
-  else
-    for division in members
-      h3 #{division.accolade}
-      if division.holders.length == 0
-        p #[i Not awarded]
-      else
-        p !{division.holders}
+    h2 Members
+    if accolades.length == 0
+        p #[i None as yet]
+    else
+        for division in members
+            h3 #{division.accolade}
+            if division.holders.length == 0
+                p #[i Not awarded]
+            else
+                p !{division.holders}

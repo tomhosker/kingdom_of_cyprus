@@ -1,86 +1,77 @@
 extends layout
 
 block content
-  profilebox.manor
-    h2 #{title}
-    figure.pbox
-      img.pbox-arms(src="/images/badgehoskerslibrary.svg")
-      figcaption Badge of #{title}
+    profilebox.manor
+        h2 #{title}
+        figure.pbox
+            img.pbox(src="/images/badgehoskerslibrary.svg")
+            figcaption Badge of #{title}
 
-  h1 #{title}
+    h1 #{title}
 
-  p #[b #{title}] of English Poetry is an electronic library, the underlying aspiration of which is to hold a copy of the poetical works of each poet appearing in #[a(href="/canons/almanack") Hosker's Almanack].
+    p #[b #{title}] of English Poetry is an electronic library, the underlying aspiration of which is to hold a copy of the poetical works of each poet appearing in #[a(href="/canons/almanack") Hosker's Almanack].
 
-  h2 The Library
-
-  h3 Poets of the Golden Age
-
-  p The golden age in question lasted from the Battle of Bosworth Field (1485) to the Battle of Passchendaele (1917).
-
-  table.midi
-    tr
-      th Poet
-      th Title
-      th Year Published
-      th In #[a(href="/canons/catalogue") Catalogue]?
-    for book in goldenPoets
-      tr
-        td #{book.authorFullTitle}
-        td #[a(href=book.link) #[i #{book.title}]]
-        td #{book.yearPublished}
-        if book.inCatalogue == 0
-          td No
-        else
-          td Yes
-
-  h3 Other Poets
-
-  table.midi
-    tr
-      th Poet
-      th Title
-      th Year Published
-      th In #[a(href="/canons/catalogue") Catalogue]?
-    for book in otherPoets
-      tr
-        td #{book.authorFullTitle}
-        td #[a(href=book.link) #[i #{book.title}]]
-        td #{book.yearPublished}
-        if book.inCatalogue == 0
-          td No
-        else
-          td Yes
-
-  h3 Anthologies
-
-  table.midi
-    tr
-      th Title
-      th Year Published
-      th In #[a(href="/canons/catalogue") Catalogue]?
-    for book in anthologies
-      tr
-        td #[a(href=book.link) #[i #{book.title}]]
-        td #{book.yearPublished}
-        if book.inCatalogue == 0
-          td No
-        else
-          td Yes
-
-  h3 Poetry-Related Material
-
-  table.midi
-    tr
-      th Title
-      th Author
-      th Year Published
-      th In #[a(href="/canons/catalogue") Catalogue]?
-    for book in poetryRelated
-      tr
-        td #[a(href=book.link) #[i #{book.title}]]
-        td #{book.authorFullTitle}
-        td #{book.yearPublished}
-        if book.inCatalogue == 0
-          td No
-        else
-          td Yes
+    h2 The Library
+    h3 Poets of the Golden Age
+    p The golden age in question lasted from the Battle of Bosworth Field (1485) to the Battle of Passchendaele (1917).
+    table.midi
+        tr
+            th Poet
+            th Title
+            th Year Published
+            th In #[a(href="/canons/catalogue") Catalogue]?
+        for book in goldenPoets
+            tr
+                td #{book.authorFullTitle}
+                td #[a(href=book.link) #[i #{book.title}]]
+                td #{book.yearPublished}
+                if book.inCatalogue == 0
+                    td No
+                else
+                    td Yes
+    h3 Other Poets
+    table.midi
+        tr
+            th Poet
+            th Title
+            th Year Published
+            th In #[a(href="/canons/catalogue") Catalogue]?
+        for book in otherPoets
+            tr
+                td #{book.authorFullTitle}
+                td #[a(href=book.link) #[i #{book.title}]]
+                td #{book.yearPublished}
+                if book.inCatalogue == 0
+                    td No
+                else
+                    td Yes
+    h3 Anthologies
+    table.midi
+        tr
+            th Title
+            th Year Published
+            th In #[a(href="/canons/catalogue") Catalogue]?
+        for book in anthologies
+            tr
+                td #[a(href=book.link) #[i #{book.title}]]
+                td #{book.yearPublished}
+                if book.inCatalogue == 0
+                    td No
+                else
+                    td Yes
+    h3 Poetry-Related Material
+    table.midi
+        tr
+            th Title
+            th Author
+            th Year Published
+            th In #[a(href="/canons/catalogue") Catalogue]?
+        for book in poetryRelated
+            tr
+                td #[a(href=book.link) #[i #{book.title}]]
+                td #{book.authorFullTitle}
+                td #{book.yearPublished}
+                if book.inCatalogue == 0
+                    td No
+                else
+                    td Yes

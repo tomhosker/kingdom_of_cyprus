@@ -1,169 +1,168 @@
 extends layout
 
 block content
-  profilebox.manor
-    h2 #{title}
-    if arms != null
-      figure.pbox
-        img.pbox-arms(src="/images/"+arms)
-    table.pbox
-      tr
-        td Professor
-        if professor == null
-          td His Majesty #[a(href="/people/rex") The King]
-        else
-          td !{professor}
-      tr
-        td Faculty
-        if faculty == null
-          td None
-        else
-          td !{faculty}
+    profilebox.manor
+        h2 #{title}
+        if arms
+            figure.pbox
+                img.pbox(src="/images/"+arms)
+        table.pbox
+            tr
+                td Professor
+                if professor
+                    td !{professor}
+                else
+                    td #[a(href="/people/rex") His Majesty]
+            tr
+                td Faculty
+                if faculty
+                    td !{faculty}
+                else
+                    td None
 
-  h1 #{title}
+    h1 #{title}
 
-  if description == null
-    p The #[b #{title}] is a constituent department of the !{faculty}.
-  else
-    p !{description}
+    if description
+        p !{description}
+    else
+        p The #[b #{title}] is a constituent department of the !{faculty}.
 
-  h2 Library
-
-  if library == null
-    p #[i Nothing as yet.]
-  else if data.department[0].code == "theology"
-    h3 Sacred Languages
-    p #[i Many of the Jews read this title, for the place where Jesus was crucified was near the city; and it was written in Hebrew, in Latin, and in Greek.]
-    h4 Hebrew
-    table.midi
-      tr
-        th Title
-        th Year Published
-        th Author
-        th In #[a(href="/canons/catalogue") Catalogue]?
-      for book in library.sacredLanguages.hebrew
-        tr
-          if book.link == null
-            td #[i #{book.title}]
-          else
-            td #[a(href=book.link) #[i #{book.title}]]
-          td #{book.yearPublished}
-          if book.authorShortTitle == null
-            td N/A
-          else
-            td #{book.authorShortTitle}
-          if book.inCatalogue == 0
-            td No
-          else
-            td Yes
-    h4 Greek
-    table.midi
-      tr
-        th Title
-        th Year Published
-        th Author
-        th In #[a(href="/canons/catalogue") Catalogue]?
-      for book in library.sacredLanguages.greek
-        tr
-          if book.link == null
-            td #[i #{book.title}]
-          else
-            td #[a(href=book.link) #[i #{book.title}]]
-          td #{book.yearPublished}
-          if book.authorShortTitle == null
-            td N/A
-          else
-            td #{book.authorShortTitle}
-          if book.inCatalogue == 0
-            td No
-          else
-            td Yes
-    h4 Latin
-    table.midi
-      tr
-        th Title
-        th Year Published
-        th Author
-        th In #[a(href="/canons/catalogue") Catalogue]?
-      for book in library.sacredLanguages.latin
-        tr
-          if book.link == null
-            td #[i #{book.title}]
-          else
-            td #[a(href=book.link) #[i #{book.title}]]
-          td #{book.yearPublished}
-          if book.authorShortTitle == null
-            td N/A
-          else
-            td #{book.authorShortTitle}
-          if book.inCatalogue == 0
-            td No
-          else
-            td Yes
-    h4 Translations
-    p #[i from the sacred languages into English]
-    table.midi
-      tr
-        th Title
-        th Year Published
-        th Author
-        th In #[a(href="/canons/catalogue") Catalogue]?
-      for book in library.sacredLanguages.translations
-        tr
-          if book.link == null
-            td #[i #{book.title}]
-          else
-            td #[a(href=book.link) #[i #{book.title}]]
-          td #{book.yearPublished}
-          if book.authorShortTitle == null
-            td N/A
-          else
-            td #{book.authorShortTitle}
-          if book.inCatalogue == 0
-            td No
-          else
-            td Yes
-    h3 General Theology
-    table.midi
-      tr
-        th Title
-        th Year Published
-        th Author
-        th In #[a(href="/canons/catalogue") Catalogue]?
-      for book in library.generalTheology
-        tr
-          if book.link == null
-            td #[i #{book.title}]
-          else
-            td #[a(href=book.link) #[i #{book.title}]]
-          td #{book.yearPublished}
-          if book.authorShortTitle == null
-            td N/A
-          else
-            td #{book.authorShortTitle}
-          if book.inCatalogue == 0
-            td No
-          else
-            td Yes
-  else if data.department[0].code == "philosophy"
-    table.midi
-      tr
-        th Title
-        th Year Published
-        th Author
-        th In #[a(href="/canons/catalogue") Catalogue]?
-      for book in library
-        tr
-          if book.link == null
-            td #[i #{book.title}]
-          else
-            td #[a(href=book.link) #[i #{book.title}]]
-          td #{book.yearPublished}
-          if book.authorShortTitle == null
-            td N/A
-          else
-            td #{book.authorShortTitle}
-          if book.inCatalogue == 0
-            td No
-          else
-            td Yes
+    h2 Library
+    if !library
+        p #[i Nothing as yet.]
+    else if data.department[0].code == "theology"
+        h3 Sacred Languages
+        p #[i Many of the Jews read this title, for the place where Jesus was crucified was near the city; and it was written in Hebrew, in Latin, and in Greek.]
+        h4 Hebrew
+        table.midi
+            tr
+                th Title
+                th Year Published
+                th Author
+                th In #[a(href="/canons/catalogue") Catalogue]?
+            for book in library.sacredLanguages.hebrew
+                tr
+                    if book.link
+                        td #[a(href=book.link) #[i #{book.title}]]
+                    else
+                        td #[i #{book.title}]
+                    td #{book.yearPublished}
+                    if book.authorShortTitle
+                        td #{book.authorShortTitle}
+                    else
+                        td N/A
+                    if book.inCatalogue == 1
+                        td Yes
+                    else
+                        td No
+        h4 Greek
+        table.midi
+            tr
+                th Title
+                th Year Published
+                th Author
+                th In #[a(href="/canons/catalogue") Catalogue]?
+            for book in library.sacredLanguages.greek
+                tr
+                    if book.link
+                        td #[a(href=book.link) #[i #{book.title}]]
+                    else
+                        td #[i #{book.title}]
+                    td #{book.yearPublished}
+                    if book.authorShortTitle
+                        td #{book.authorShortTitle}
+                    else
+                        td N/A
+                    if book.inCatalogue == 1
+                        td Yes
+                    else
+                        td No
+        h4 Latin
+        table.midi
+            tr
+                th Title
+                th Year Published
+                th Author
+                th In #[a(href="/canons/catalogue") Catalogue]?
+            for book in library.sacredLanguages.latin
+                tr
+                    if book.link
+                        td #[a(href=book.link) #[i #{book.title}]]
+                    else
+                        td #[i #{book.title}]
+                    td #{book.yearPublished}
+                    if book.authorShortTitle
+                        td #{book.authorShortTitle}
+                    else
+                        td N/A
+                    if book.inCatalogue == 1
+                        td Yes
+                    else
+                        td No
+        h4 Translations
+        p #[i from the sacred languages into English]
+        table.midi
+            tr
+                th Title
+                th Year Published
+                th Author
+                th In #[a(href="/canons/catalogue") Catalogue]?
+            for book in library.sacredLanguages.translations
+                tr
+                    if book.link
+                        td #[a(href=book.link) #[i #{book.title}]]
+                    else
+                        td #[i #{book.title}]
+                    td #{book.yearPublished}
+                    if book.authorShortTitle
+                        td #{book.authorShortTitle}
+                    else
+                        td N/A
+                    if book.inCatalogue == 1
+                        td Yes
+                    else
+                        td No
+        h3 General Theology
+        table.midi
+            tr
+                th Title
+                th Year Published
+                th Author
+                th In #[a(href="/canons/catalogue") Catalogue]?
+            for book in library.generalTheology
+                tr
+                    if book.link
+                        td #[a(href=book.link) #[i #{book.title}]]
+                    else
+                        td #[i #{book.title}]
+                    td #{book.yearPublished}
+                    if book.authorShortTitle
+                        td #{book.authorShortTitle}
+                    else
+                        td N/A
+                    if book.inCatalogue == 1
+                        td Yes
+                    else
+                        td No
+    else
+        table.midi
+            tr
+                th Title
+                th Year Published
+                th Author
+                th In #[a(href="/canons/catalogue") Catalogue]?
+            for book in library
+                tr
+                    if book.link
+                        td #[a(href=book.link) #[i #{book.title}]]
+                    else
+                        td #[i #{book.title}]
+                    td #{book.yearPublished}
+                    if book.authorShortTitle
+                        td #{book.authorShortTitle}
+                    else
+                        td N/A
+                    if book.inCatalogue == 1
+                        td Yes
+                    else
+                        td No
