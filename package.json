@@ -10,6 +10,7 @@
     "scripts": {
         "start": "node ./bin/www",
         "devstart": "nodemon ./bin/www",
+        "install-externals": "sh install_externals.sh",
         "prettier": "npx prettier --write ."
     },
     "dependencies": {
